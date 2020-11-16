@@ -173,7 +173,27 @@ int* preorderTraversal(struct TreeNode* root,int* returnSize){
     return res;
 }
 
-
-
+N差树的前序遍历
+// 采用递归来解决。时间复杂度为：O(N),空间复杂度O(N)
+class Solution {
+    public List<Integer> postorder(Node root) {
+        List<Integer> res = new ArrayList<Integer>();
+        if (root == null){
+            return res;
+        }
+        Backorder(root,res);
+        return res;
+    }
+    public void Backorder(Node root,List res){
+        if (root == null) {
+            return;
+        }// 循环终止条件
+        for (int i = 0; i < root.children.size();i++){
+            Backorder(root.children.get(i),res); // drill down
+           
+        }
+         res.add(root.val); // 执行本层逻辑。这个代码不能放到forx循环内部。
+    }
+}
 
 
